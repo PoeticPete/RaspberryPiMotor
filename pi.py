@@ -2,7 +2,7 @@ import RPi.GPIO as gpio
 import time
 
 def init():
-	gpio.setmode(gpio.RCM)
+	gpio.setmode(gpio.BCM)
 	gpio.setup(17, gpio.OUT)
 	gpio.setup(22, gpio.OUT)
 	gpio.setup(23, gpio.OUT)
