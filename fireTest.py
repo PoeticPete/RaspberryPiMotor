@@ -11,4 +11,9 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 storage = firebase.storage()
 
-print("success!")
+def stream_handler(message):
+    print(message["event"]) # put
+    print(message["path"]) # /-K7yGTTEp7O549EzTYtI
+    print(message["data"]) # {'title': 'Pyrebase', "body": "etc..."}
+
+lock_firebase_stream = db.child("doors/door1/status").stream(stream_handler)
