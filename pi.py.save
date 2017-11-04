@@ -66,22 +66,15 @@ storage = firebase.storage()				# initialize the storage database
 
 def stream_handler(data):
 	'''
-	Handles the data stream from Firebase. Locks and unlocks the door.
+	Handles the data stream from Firebase
 
 	:param message: the data from Firebase
 
 	'''
 
-	print(data["path"])
+	print(data["event"])	 	# put
+	print(data["path"]) 		# /-K7yGTTEp7O549EzTYtI
 	print(data["data"])
-	print(data["event"])
-	if data["event"] == 'patch':
-		if data["data"].get("status", None) is True:
-			backward(2.5) # lock door, less than unlock to fix mechanical bug
-		else:
-			forward(2.7) # unlock door
+ 		# {'title': 'Pyrebase', "body": "etc..."}
 
-
-
-
-lock_firebase_stream = db.child("doors/door1").stream(stream_handler)
+lock_firebase_stream = db.child("doors/door1/status").stream(stream_handler)
